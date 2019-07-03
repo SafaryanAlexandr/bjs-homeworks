@@ -11,10 +11,18 @@ function calculateQuadraticEquation(){
 }
 
 function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
+    let discriminant = b*b - 4*a*c;
+    let x = [];
+    if (discriminant === 0) {
+        x[0] = -b/2*a;
+    } else if (discriminant > 0){
+        x[0] = (-b + Math.sqrt(discriminant)) / 2*a;
+        x[1] = (-b - Math.sqrt(discriminant)) / 2*a;
+    } else {
+        x = [];
+    }
+    return x;
 }
-
 function calculateDrinkTask(){
     let name = window.personName.value;
     let dateOfBirthday = new Date(window.dateOfBirthday.value);
