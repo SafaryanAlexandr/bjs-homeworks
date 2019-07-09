@@ -14,10 +14,10 @@ function getResult(a,b,c){
     let discriminant = b*b - 4*a*c;
     let x = [];
     if (discriminant === 0) {
-        x[0] = -b/2*a;
+        x[0] = -b/(2*a);
     } else if (discriminant > 0){
-        x[0] = (-b + Math.sqrt(discriminant)) / 2*a;
-        x[1] = (-b - Math.sqrt(discriminant)) / 2*a;
+        x[0] = (-b + Math.sqrt(discriminant)) / (2*a);
+        x[1] = (-b - Math.sqrt(discriminant)) / (2*a);
     }
     return x;
 }
@@ -30,11 +30,11 @@ function calculateDrinkTask(){
 
 function askDrink(name,dateOfBirthday){
     let yearOfBirthday = dateOfBirthday.getFullYear();
-    let yearNow = 2019;
-    let old = yearNow - yearOfBirthday; 
+    let dateNow = Date.now();
+    let old = Math.floor((dateNow - dateOfBirthday)/31536000000); 
     let result;
     if (old > 18) {
-        result = 'Не желаете ли олд-фэшн, ' + name + ' ?'; // не работает ${name}
+        result = 'Не желаете ли олд-фэшн, ' + name + ' ?';
     } else {
         result = 'Сожалею, ' + name + ', но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!';
     }
