@@ -21,6 +21,12 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
+    let sound = animal.sound;
+    if(animal === undefined) {
+        return null;
+    }
+    return sound;
+    
     // код для задачи №2 писать здесь
 }
 
