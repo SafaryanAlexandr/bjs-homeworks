@@ -15,32 +15,32 @@ function calculateMortgage() {
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
     "use strict";//строгий режим
-    if(Number.isNaN(percent)){
-        console.log(`Задайте параметр 'Процентная ставка'`);
-        return;
-    }
-    if(Number.isNaN(contribution)){
-        console.log(`Задайте параметр 'Начальный взнос'`);
-        return; 
-    }
-    if(Number.isNaN(amount)){
-        console.log(`Задайте параметр 'Общая стоимость'`);
-        return; 
-    }
-    if (typeof percent !== 'number') {
+    let percent = parseFloat(percent);
+    if(isNaN(percent)){
         console.log(`Параметр 'Процентная ставка' содержит неправильное значение ${percent}`);
         return;
     }
-    if (typeof contribution !== 'number') {
+    let contribution = parseFloat(contribution);
+    if(isNaN(contribution)){
         console.log(`Параметр 'Начальный взнос' содержит неправильное значение ${contribution}`);
         return;
     }
-    if (typeof amount !== 'number') {
+    let amount = parseFloat(amount);
+    if(isNaN(amount)){
         console.log(`Параметр 'Общая стоимость' содержит неправильное значение ${amount}`);
         return;
     }
+    console.log(percent);
+    console.log(contribution);
+    console.log(amount);
     let amountBank = amount - contribution; // нужно веруть банку
-    let payMonth = amountBank
+    let n = Math.floor(( Date.parse(date) - Date.now()) / 2592000000);
+    let P = percent / 1200; 
+    let payMonth = amountBank * (P + P / (((1+P)**n) - 1));
+    console.log(payMonth);
+    result = payMonth *n;
+    return result;
+
      
 
     // код для задачи №1 писать здесь
@@ -55,11 +55,10 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    if(name.length === 0){
-        greeting =  'Привет, мир! Меня зовут Аноним.';
-    } else {
-        greeting =  `Привет, мир! Меня зовут ${name}.`;
-    }
+    if(!name){
+        name = 'Аноним'; // в случаи undefined или null менят имя на Аноним
+    } 
+    greeting =  `Привет, мир! Меня зовут ${name}.`;
     return greeting;
 
     // код для задачи №2 писать здесь
