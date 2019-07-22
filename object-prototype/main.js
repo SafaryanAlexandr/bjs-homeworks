@@ -7,6 +7,14 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
+    let now = Date.now();
+    let birthdayUTC = Date.parse(birthday);
+    let diff = now - birthdayUTC;
+    let age18 = 567648000000; //18лет в миллисекундах
+    if(diff > age18) {
+        return result = 1;
+    }
+    
     // код для задачи №1 писать здесь
 }
 
@@ -41,7 +49,7 @@ function initCalculateStatement() {
 
 function getAverageMark(marks) {
     let total = 0;
-    let rroundedAverage;
+    let roundedAverage;
     for (let i=0; i < marks.length; i++) {
         total = total + parseInt(marks[i]);
         console.log(total);
