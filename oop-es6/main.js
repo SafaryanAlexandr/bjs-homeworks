@@ -52,3 +52,60 @@ console.log(bow.getDamage);
 class reinforceWeapon extends Weapon {
 
 }
+
+
+//Задача №3
+class StudentLog {
+    constructor(name) {
+        this.name = name;
+        this.registr = {
+            'Algebra': [],
+            'Geometry': [],
+            'Physics' : []
+        };
+    }
+    getName() {
+        return this.name;
+    }
+    addGrade(grade, subject) {
+      if(!Object.keys(this.registr).includes(subject)){
+        return console.log(`Предмет ${subject} не входит в программу обучения`);
+      }
+      if(grade > 0 && grade <= 5){
+        return this.registr[subject].push(grade);
+      } else {
+        console.log(`Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5.`);
+      }
+    }
+    getAverageBySubject(subject) {
+      if(!Object.keys(this.registr).includes(subject)){
+        return 0;
+      }
+      let sum = 0;
+      for (let grade of this.registr[subject]) {
+        sum += parseFloat(grade);
+        }
+        return ( sum / (this.registr[subject].length)).toFixed(2);
+    }
+    getTotalAverage() {
+      let i = 0;
+      let sumTotal = 0;
+      for ( let total of Object.keys(this.registr)) {
+        for (let grade of this.registr[total]) {
+          sumTotal += parseFloat(grade);
+          i++;
+        }
+      }
+      return sumTotal / i;
+    }
+}
+
+const log = new StudentLog('Олег');
+console.log(log.getName());
+console.log(log.addGrade( '5' ,'Geometry'));
+console.log(log.addGrade( '5' ,'Geometry'));
+console.log(log.addGrade( '5' ,'Algebra'));
+console.log(log.addGrade( '3' ,'Geometry'));
+console.log(log.getAverageBySubject('Geometry'));
+console.log(log.getAverageBySubject('Geomtry'));
+console.log(log.getTotalAverage());
